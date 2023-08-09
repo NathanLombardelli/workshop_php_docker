@@ -9,5 +9,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css">
 </head>
 <body>
+<header>
 
-<h1>Worshop Classic Models</h1>
+    <h1><?= $_SESSION['username'] ?></h1>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="/">Worshop Classic Models</a>
+            </li>
+            <li>
+                <a href="register.php">Register</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+

@@ -1,12 +1,11 @@
 <?php
 declare(strict_types=1);
 
+session_start();
+
 try {
 
-    $pdo = new PDO('mysql:host=' . getenv('DB_HOST') . ';dbname='. getenv('DB_DATABASE')  ,
-        getenv('DB_USERNAME'),
-        getenv('DB_PASSWORD')
-    );
+    require_once 'public/db/connection.php';
 
     $sql = "SELECT * FROM products LIMIT 20";
 
