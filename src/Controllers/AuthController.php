@@ -1,34 +1,28 @@
 <?php
 
-namespace Controllers;
-
-use Database;
-use Exception;
-
-require_once 'public/db/Database.php';
+require_once 'db/Database.php';
 
 class AuthController
 {
 
-    //ToDo: changer post par var methode.
-
     private $db;
+
+    public function __construct(){
+        $this->db = new Database();
+        session_start();
+    }
 
     public function register(){
 
-        session_start();
-
         if (empty($_POST)) {
 
-            include 'public/views/layout/header.view.php';
-            include 'public/views/register.view.php';
-            include 'public/views/layout/footer.view.php';
+            include 'views/layout/header.view.php';
+            include 'views/register.view.php';
+            include 'views/layout/footer.view.php';
 
         }else {
 
             try {
-
-                $this->db = new Database();
 
                 if (empty($_POST['username']) || empty($_POST['email']) || empty($_POST['password'])) {
                     throw new Exception('Formulaire non complet');
@@ -47,11 +41,11 @@ class AuthController
                     'email' => $email
                 ];
 
-                header('location: index.php');
+                header('location: /');
 
 
             } catch (Exception $e) {
-                header('location: register.php?m=erreur%20dans%20la%20création%20du%20compte&color=red');
+                header('location: register?m=erreur%20dans%20la%20création%20du%20compte&color=red');
             }
 
 
@@ -61,19 +55,15 @@ class AuthController
 
     public function login(){
 
-        session_start();
-
         if (empty($_POST)) {
 
-            include 'public/views/layout/header.view.php';
-            include 'public/views/login.view.php';
-            include 'public/views/layout/footer.view.php';
+            include 'views/layout/header.view.php';
+            include 'views/login.view.php';
+            include 'views/layout/footer.view.php';
 
         }else {
 
             try {
-
-                $this->db = new Database();
 
                 if (empty($_POST['username']) || empty($_POST['password'])) {
                     throw new Exception('Formulaire non complet');
@@ -92,11 +82,11 @@ class AuthController
                         'email' => $user['email']
                     ];
 
-                    header('location: index.php');
+                    header('location: /');
 
                 } else {
                     // Gérer le cas où l'utilisateur n'est pas trouvé ou l'authentification échoue
-                    header('location: login.php?m=le%20compte%20n%27existe%20pas&color=red');
+                    header('location: login?m=le%20compte%20n%27existe%20pas&color=red');
                 }
 
 
@@ -108,7 +98,6 @@ class AuthController
     }
 
     public function logout(){
-        session_start();
         session_destroy();
         header('Location: /');
     }

@@ -18,17 +18,17 @@
             </li>
             <?php  if (empty($_SESSION)): ?>
                 <li>
-                    <a href="register.php">Register</a>
+                    <a href="register">Register</a>
                 </li>
                 <li>
-                    <a href="login.php">Login</a>
+                    <a href="login">Login</a>
                 </li>
             <?php else: ?>
                 <li>
                     <a href="/">Bonjour <?= $_SESSION['user']['username'] ?> </a>
                 </li>
             <li>
-                <a href="logout.php">Logout</a>
+                <a href="logout">Logout</a>
             </li>
             <?php endif; ?>
 

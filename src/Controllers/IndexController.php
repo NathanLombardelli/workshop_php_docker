@@ -1,16 +1,9 @@
 <?php
 
-namespace Controllers;
-
-use Database;
-use Exception;
-
-require_once 'public/db/Database.php';
+require_once 'db/Database.php';
 
 class IndexController
 {
-
-    //ToDo: changer post par var methode.
 
     private $db;
 
@@ -25,9 +18,9 @@ class IndexController
 
             $products = $this->db->fetchAll("SELECT * FROM products LIMIT 20");
 
-            include 'public/views/layout/header.view.php';
-            include 'public/views/index.view.php';
-            include 'public/views/layout/footer.view.php';
+            include 'views/layout/header.view.php';
+            include 'views/index.view.php';
+            include 'views/layout/footer.view.php';
 
         }catch (Exception $e){
             print_r($e->getMessage());
@@ -38,14 +31,12 @@ class IndexController
 
         try {
 
-            require_once 'public/db/connection.php';
-
             $product = $this->db->prepare("SELECT * FROM products WHERE productCode = ?",[$_GET['id']]);
 
             //includes
-            include 'public/views/layout/header.view.php';
-            include 'public/views/product.view.php';
-            include 'public/views/layout/footer.view.php';
+            include 'views/layout/header.view.php';
+            include 'views/product.view.php';
+            include 'views/layout/footer.view.php';
 
         }catch (Exception $e){
             print_r($e->getMessage());

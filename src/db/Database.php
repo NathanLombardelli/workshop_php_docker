@@ -1,5 +1,6 @@
 <?php
 
+
 class Database
 {
     private $pdo;
@@ -7,15 +8,17 @@ class Database
     /**
      * Constructeur de Base de données, utilise les variables d'environement pour se connecter.
      */
-    public function __construct(){
-        $this->pdo = new PDO('mysql:host=' . getenv('DB_HOST') . ';dbname='. getenv('DB_DATABASE')  , getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
+    public function __construct()
+    {
+        $this->pdo = new PDO('mysql:host=' . getenv('DB_HOST') . ';dbname=' . getenv('DB_DATABASE'), getenv('DB_USERNAME'), getenv('DB_PASSWORD'));
     }
 
     /**
      * @param string $query la commande sql a executer.
      * @return array|false return un tableau associatif avec les résultat de la requête.
      */
-    public function fetchAll(string $query){
+    public function fetchAll(string $query)
+    {
         return $this->pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -23,7 +26,8 @@ class Database
      * @param string $query la commande sql a executer.
      * @return mixed return le résultat de la requête.
      */
-    public function fetch(string $query){
+    public function fetch(string $query)
+    {
         return $this->pdo->query($query)->fetch(PDO::FETCH_ASSOC);
     }
 
@@ -32,7 +36,8 @@ class Database
      * @param array $var tableau avec les variables à bind.
      * @return mixed return le résultat de la requête.
      */
-    public function prepare(string $query, array $var){
+    public function prepare(string $query, array $var)
+    {
         $stmt = $this->pdo->prepare($query);
         $stmt->execute($var);
         return $stmt->fetch(PDO::FETCH_ASSOC);
@@ -43,7 +48,8 @@ class Database
      * @param array $var tableau avec les variables à bind.
      * @return array|false return un tableau associatif avec les résultat de la requête.
      */
-    public function prepareAll(string $query,array $var){
+    public function prepareAll(string $query, array $var)
+    {
         $stmt = $this->pdo->prepare($query);
         $stmt->execute($var);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -52,10 +58,10 @@ class Database
     /**
      * @return false|string the last Insert Id in the db.
      */
-    public function lastInsertId(){
+    public function lastInsertId()
+    {
         return $this->pdo->lastInsertId();
     }
-
 
 
 }
