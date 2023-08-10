@@ -43,7 +43,7 @@ if (empty($_POST)) {
 
 
     }catch (Exception $e){
-
+        header('location: register.php?m=erreur%20dans%20la%20création%20du%20compte&color=red');
     }
 
 

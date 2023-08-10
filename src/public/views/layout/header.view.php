@@ -11,18 +11,22 @@
 <body>
 <header>
 
-    <h1><?php if (empty($_SESSION)){ echo $_SESSION['username'];} ?></h1>
-
     <nav>
         <ul>
             <li>
                 <a href="/">Worshop Classic Models</a>
             </li>
             <?php  if (empty($_SESSION)): ?>
-            <li>
-                <a href="register.php">Register</a>
-            </li>
+                <li>
+                    <a href="register.php">Register</a>
+                </li>
+                <li>
+                    <a href="login.php">Login</a>
+                </li>
             <?php else: ?>
+                <li>
+                    <a href="/">Bonjour <?= $_SESSION['user']['username'] ?> </a>
+                </li>
             <li>
                 <a href="logout.php">Logout</a>
             </li>
