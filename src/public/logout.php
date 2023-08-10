@@ -1,7 +1,7 @@
 <?php
 
-session_start();
+use Controllers\AuthController;
+require_once 'public/Controllers/AuthController.php';
 
-session_destroy();
-
-header('Location: /');
+$Auth = new AuthController();
+$Auth->logout();

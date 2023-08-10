@@ -2,13 +2,15 @@
 
 session_start();
 
+require_once 'public/db/Database.php';
+
+$db = new Database();
 
     try {
 
         require_once 'public/db/connection.php';
 
-        $stmt = $pdo->query("SELECT * FROM products WHERE productCode = '". $_GET['id'] . "'");
-        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+        $product = $db->prepare("SELECT * FROM products WHERE productCode = ?",[$_GET['id']]);
 
         //includes
         include 'public/views/layout/header.view.php';

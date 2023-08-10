@@ -1,4 +1,5 @@
 <h1>Register</h1>
+
 <h2 style="color:<?= $_GET['color'] ?> "> <?= $_GET['m'] ?> </h2>
 <form action="#" method="post">
     <div>

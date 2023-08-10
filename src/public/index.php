@@ -5,12 +5,11 @@ session_start();
 
 try {
 
-    require_once 'public/db/connection.php';
+    require_once 'public/db/Database.php';
 
-    $sql = "SELECT * FROM products LIMIT 20";
+    $db = new Database();
 
-    $stmt = $pdo->query($sql);
-    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $products = $db->fetchAll("SELECT * FROM products LIMIT 20");
 
     include 'public/views/layout/header.view.php';
     include 'public/views/index.view.php';
