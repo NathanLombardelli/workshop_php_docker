@@ -1,6 +1,9 @@
 <?php
 
-require_once 'db/Database.php';
+namespace Controllers;
+
+use models\Database;
+use Exception;
 
 class IndexController
 {

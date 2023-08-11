@@ -1,5 +1,9 @@
 <?php
 
+namespace Controllers;
+
+use Exception;
+
 class Router
 {
     private $controller;
@@ -17,22 +21,30 @@ class Router
 
             $urlPath = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), "/");
 
-            if ($urlPath === "") {
-                $this->controller->index();
-            }else if ($urlPath === "product") {
-                $this->controller->product();
-            }else if ($urlPath === "logout") {
-                $this->Auth->logout();
-            }else if ($urlPath === "register") {
-                $this->Auth->register();
-            }else if ($urlPath === "login") {
-                $this->Auth->login();
-            }else{
-                $this->controller->errorPage("Page Introuvable","404");
+
+            switch ($urlPath){
+                case "" :
+                    $this->controller->index();
+                    break;
+                case "product":
+                    $this->controller->product();
+                    break;
+                case "logout":
+                    $this->Auth->logout();
+                    break;
+                case "register":
+                    $this->Auth->register();
+                    break;
+                case "login":
+                    $this->Auth->login();
+                    break;
+                default:
+                    $this->controller->errorPage("Page Introuvable","404");
+                    break;
             }
 
         }catch (Exception $e){
-            $this->controller->errorPage($e,"500");
+            $this->controller->errorPage("une erreur est survenue,revenez plus tard","500");
         }
     }
 

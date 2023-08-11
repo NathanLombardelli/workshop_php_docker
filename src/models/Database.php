@@ -1,5 +1,8 @@
 <?php
 
+namespace models;
+
+use PDO;
 
 class Database
 {
@@ -56,7 +59,7 @@ class Database
     }
 
     /**
-     * @return false|string the last Insert Id in the db.
+     * @return false|string the last Insert Id in the models.
      */
     public function lastInsertId()
     {

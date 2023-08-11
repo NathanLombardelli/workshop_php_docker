@@ -1,12 +1,12 @@
 <?php
 
+require 'vendor/autoload.php';
 
-require_once 'Controllers/IndexController.php';
+use Controllers\IndexController;
+use Controllers\AuthController;
+use Controllers\Router;
+
 $controller = new IndexController();
-
-require_once 'Controllers/AuthController.php';
 $Auth = new AuthController();
-
-require_once 'Controllers/Router.php';
 $router = new Router($controller,$Auth);
 $router->start();
