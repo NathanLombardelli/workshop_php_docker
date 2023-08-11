@@ -23,7 +23,7 @@ class IndexController
             include 'views/layout/footer.view.php';
 
         }catch (Exception $e){
-            print_r($e->getMessage());
+            throw new Exception($e->getMessage());
         }
     }
 
@@ -39,8 +39,18 @@ class IndexController
             include 'views/layout/footer.view.php';
 
         }catch (Exception $e){
-            print_r($e->getMessage());
+            throw new Exception($e->getMessage());
         }
+
+    }
+
+
+    public function page404($e){
+
+        include 'views/layout/header.view.php';
+        include 'views/layout/404.view.php';
+        include 'views/layout/footer.view.php';
+
 
     }
 

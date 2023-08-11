@@ -5,6 +5,7 @@ require_once 'Controllers/IndexController.php';
 $controller = new IndexController();
 
 
+
 require_once 'Controllers/AuthController.php';
 $Auth = new AuthController();
 
@@ -15,25 +16,19 @@ try {
 
     if ($urlPath === "") {
         $controller->index();
-    }
-
-    if ($urlPath === "product") {
+    }else if ($urlPath === "product") {
         $controller->product();
-    }
-
-    if ($urlPath === "logout") {
+    }else if ($urlPath === "logout") {
         $Auth->logout();
-    }
-
-    if ($urlPath === "register") {
+    }else if ($urlPath === "register") {
         $Auth->register();
-    }
-
-    if ($urlPath === "login") {
+    }else if ($urlPath === "login") {
         $Auth->login();
+    }else{
+        $controller->page404("Page Introuvable");
     }
 
 }catch (Exception $e){
-    echo $e;
+    $controller->page404($e);
 }
 
