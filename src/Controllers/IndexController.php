@@ -45,10 +45,10 @@ class IndexController
     }
 
 
-    public function page404($e){
+    public function errorPage($e, $errorCode){
 
         include 'views/layout/header.view.php';
-        include 'views/layout/404.view.php';
+        include 'views/layout/errorPage.view.php';
         include 'views/layout/footer.view.php';
 
 
