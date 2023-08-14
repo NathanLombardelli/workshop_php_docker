@@ -2,6 +2,8 @@
 
 require 'vendor/autoload.php';
 
+
+
 use Controllers\IndexController;
 use Controllers\AuthController;
 use Controllers\Router;

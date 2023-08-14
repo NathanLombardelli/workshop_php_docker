@@ -82,7 +82,7 @@ class AuthController
                     $_SESSION['user'] = [
                         'id' => $user['id'],
                         'username' => $user['username'],
-                        'email' => $user['email']
+                        'email' => $user['email'],
                     ];
 
                     header('location: /');

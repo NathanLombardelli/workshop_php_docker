@@ -16,7 +16,7 @@
             <li>
                 <a href="/">Worshop Classic Models</a>
             </li>
-            <?php  if (empty($_SESSION)): ?>
+            <?php  if (empty($_SESSION['id'] == 0)): ?>
                 <li>
                     <a href="register">Register</a>
                 </li>
